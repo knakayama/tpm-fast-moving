@@ -17,6 +17,8 @@ antigen apply
 bindkey '^x^f' -tpm-fast-moving # or your favorite key
 ```
 
+# License
+
 [MIT](https://github.com/knakayama/tpm-fast-moving/blob/master/LICENSE)
 
 # Author
