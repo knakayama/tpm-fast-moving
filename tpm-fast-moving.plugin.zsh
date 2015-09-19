@@ -16,11 +16,13 @@ EOT
   return 1
   fi
 
-  cd $(tmux show-options -gqv @tpm_plugins \
-    | tr ' ' '\n' \
-    | cut -d/ -f2 \
-    | awk '/[:alnum:]/ {print}' \
-    | xargs -I% echo ${TMUX_PLUGIN_MANAGER_PATH}% \
+  # old version tpm compatibility
+  cd $(ls -1d $TMUX_PLUGIN_MANAGER_PATH* \
+    | grep "$(tmux show-options -gqv @tpm_plugins \
+      | tr ' ' '\n' \
+      | cut -d/ -f2 \
+      | awk '/[:alnum:]/ {print}' \
+      | xargs -I% echo ${TMUX_PLUGIN_MANAGER_PATH}%)" \
     | peco
   )
   zle accept-line
